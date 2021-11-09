@@ -1,16 +1,14 @@
 // import { useState } from 'react';
 import UserData from '../UserData/UserData';
-import { fechUserslogin } from '../../utilits/fetchApi';
+// import { fechUserslogin } from '../../utilits/fetchApi';
 
-function Users({ usersData, userDetail, searcUserlogin }) {
-  //   const [login, setLogin] = useState('');
+function Users({ usersData, isUserDetail, searcUserlogin }) {
   const dataUsers = usersData.items;
 
   const hendleClick = login => {
-    userDetail(true);
-    //  setLogin(login);
+    isUserDetail(true);
     searcUserlogin(login);
-    fechUserslogin(login);
+    //  fechUserslogin(login);
   };
 
   //   const { detailData, isLoading } = fechUserslogin;

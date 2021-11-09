@@ -5,9 +5,12 @@ function SearchForm({ searchUser }) {
 
   const hendleChangeName = e => {
     const value = e.currentTarget.value.trim();
-    console.log(value);
     setName(value);
-    searchUser(value);
+  };
+
+  const hendleSearch = e => {
+    e.preventDefault();
+    searchUser(name);
   };
 
   const reset = () => {
@@ -17,7 +20,7 @@ function SearchForm({ searchUser }) {
 
   return (
     <div>
-      <form className="{s.ContactEntryForm}">
+      <form className="{s.ContactEntryForm}" onSubmit={hendleSearch}>
         <label className="{s.NameInputField}">
           {/* <span className="{s.iconForm}"></span> */}
           {/* <span className="">Name:</span> */}
@@ -30,11 +33,13 @@ function SearchForm({ searchUser }) {
             // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             //  title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             placeholder="Enter GitHub username"
-            // required
-            onInput={hendleChangeName}
+            required
+            onChange={hendleChangeName}
           />
         </label>
+        <button type="submit">Search</button>
       </form>
+
       <button type="button" onClick={reset}>
         Сlear
       </button>

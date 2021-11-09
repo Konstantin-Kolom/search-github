@@ -1,34 +1,44 @@
-import { useFechUserslogin } from '../../huks/useFechUsers';
-import { fechUserslogin } from '../../utilits/fetchApi';
+// import { useState } from 'react';
+import { useFechUserslogin, useFechUsersRepo } from '../../huks/useFechUsers';
+// import { fechUserslogin } from '../../utilits/fetchApi';
+import Repolis from '../RepoList/RepoList';
 
-function UserData({ userDetail, searcUserlogin, user }) {
-  //   console.log(user);
-
-  const hendleClick = user => {
-    console.log(user);
-    fechUserslogin(user);
-    userDetail(false);
+function UserData({ isUserDetail, searcUserlogin, login, isDetailCard }) {
+  const hendleClick = login => {
+    isUserDetail(false);
     searcUserlogin('');
   };
 
-  const { userLogin, isLoading } = useFechUserslogin();
-
-  //   console.log(isLoading);
-  //   console.log(userLogin);
+  const { userCard, isLoading } = useFechUserslogin(login);
+  const { userPerpo } = useFechUsersRepo(login);
+  console.log(userPerpo);
 
   return (
     <>
-      <h1>Title User</h1>
-      <div>Avatar</div>
-      <ul>
-        <li>UserName</li>
-        <li>Email</li>
-        <li>Location</li>
-      </ul>
+      {isLoading && 'LOADING...'}
+      {userCard && (
+        <>
+          <h1>Title User</h1>
+          <div>
+            <img src={userCard.avatar_url} alt="Avatar" width="150px" />
+          </div>
+          <ul>
+            <li>UserName: {userCard.name}</li>
+            <li>Email: {userCard.email}</li>
+            <li>Location: {userCard.location}</li>
+            <li>Location: {userCard.created_at}</li>
+            <li>Public repos: {userCard.public_repos}</li>
+          </ul>
+          <p>Followers {userCard.followers}</p>
+          <p>Bio: {userCard.bio}</p>
+          <p>Public repos: {userCard.public_repos}</p>
 
-      <button type="button" onClick={() => userLogin({ user })}>
-        Close
-      </button>
+          <button type="button" onClick={() => hendleClick(login)}>
+            Close
+          </button>
+          <Repolis></Repolis>
+        </>
+      )}
     </>
   );
 }

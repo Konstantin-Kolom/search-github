@@ -1,37 +1,54 @@
-import { useQuery, useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 import axios from 'axios';
 
-const name = 'konst';
+axios.defaults.baseURL = 'https://api.github.com';
 
 const fechUsers = async searchNameUsers => {
-  //   const response = await axios.get(`/users/${name}`);
-  //   const response = await axios.get(`/users/${name}`);
-  //   const response = await axios.get(`/users/${name}`);
-  const response = await axios.get(`/search/users?q=${searchNameUsers}`, {
-    //  initialData: [],
-    //  enabled: searchNameUsers !== Object,
+  const response = await axios.get(`/search/users?`, {
+    params: {
+      q: searchNameUsers,
+    },
   });
   return response.data;
 };
 
-export const useFechUsers = () => {
-  const { data, isLoading } = useMutation('/users', fechUsers);
-
+export const useFechUsers = searchNameUsers => {
+  const { data, isLoading } = useQuery('/users', () => fechUsers(searchNameUsers), {
+    enabled: searchNameUsers !== '',
+    retry: 0,
+    refetchOnMount: searchNameUsers,
+  });
   return { usersData: data, isLoading };
 };
 
 /////////////////////
 
-const fechUserslogin = async user => {
-  const response = await axios.get(`/users/${user}`);
+const fechUserslogin = async login => {
+  const response = await axios.get(`/users/${login}`);
   return response.data;
 };
 
-// const user = data?.id;
+export const useFechUserslogin = login => {
+  const { data, isLoading } = useQuery([`/users', ${login}`], () => fechUserslogin(login), {
+    enabled: login !== undefined,
+    retry: 0,
+  });
 
-export const useFechUserslogin = () => {
-  const { data, isLoading } = useMutation(fechUserslogin);
-  //   console.log(data);
+  return { userCard: data, isLoading };
+};
 
-  return { userLogin: data, isLoading };
+//////////////
+
+const fechUsersRepo = async login => {
+  const response = await axios.get(`/users/${login}/gists`);
+  return response.data;
+};
+
+export const useFechUsersRepo = login => {
+  const { data, isLoading } = useQuery([`/users', ${login} repo`], () => fechUsersRepo(login), {
+    enabled: login !== undefined,
+    retry: 0,
+  });
+
+  return { userPerpo: data, isLoading };
 };
