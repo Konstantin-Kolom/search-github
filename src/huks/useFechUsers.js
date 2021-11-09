@@ -29,18 +29,22 @@ const fechUserslogin = async login => {
 };
 
 export const useFechUserslogin = login => {
-  const { data, isLoading } = useQuery([`/users', ${login}`], () => fechUserslogin(login), {
-    enabled: login !== undefined,
-    retry: 0,
-  });
+  const { data, isLoading, isError } = useQuery(
+    [`/users', ${login}`],
+    () => fechUserslogin(login),
+    {
+      enabled: login !== undefined,
+      retry: 0,
+    },
+  );
 
-  return { userCard: data, isLoading };
+  return { userCard: data, isLoading, isError };
 };
 
 //////////////
 
 const fechUsersRepo = async login => {
-  const response = await axios.get(`/users/${login}/gists`);
+  const response = await axios.get(`/users/${login}/repos`);
   return response.data;
 };
 

@@ -9,13 +9,15 @@ function UserData({ isUserDetail, searcUserlogin, login, isDetailCard }) {
     searcUserlogin('');
   };
 
-  const { userCard, isLoading } = useFechUserslogin(login);
+  const { userCard, isLoading, isError } = useFechUserslogin(login);
   const { userPerpo } = useFechUsersRepo(login);
-  console.log(userPerpo);
+  //   console.log(userPerpo);
+  //   console.log(status);
 
   return (
     <>
       {isLoading && 'LOADING...'}
+      {isError && <h2>Sorry, the request limit has been exceeded. Please try again later.</h2>}
       {userCard && (
         <>
           <h1>Title User</h1>
@@ -24,6 +26,7 @@ function UserData({ isUserDetail, searcUserlogin, login, isDetailCard }) {
           </div>
           <ul>
             <li>UserName: {userCard.name}</li>
+            <li>Login: {userCard.login}</li>
             <li>Email: {userCard.email}</li>
             <li>Location: {userCard.location}</li>
             <li>Location: {userCard.created_at}</li>
@@ -36,7 +39,7 @@ function UserData({ isUserDetail, searcUserlogin, login, isDetailCard }) {
           <button type="button" onClick={() => hendleClick(login)}>
             Close
           </button>
-          <Repolis></Repolis>
+          <Repolis userPerpo={userPerpo} />
         </>
       )}
     </>

@@ -4,7 +4,7 @@ function SearchForm({ searchUser }) {
   const [name, setName] = useState('');
 
   const hendleChangeName = e => {
-    const value = e.currentTarget.value.trim();
+    const value = e.currentTarget.value;
     setName(value);
   };
 
