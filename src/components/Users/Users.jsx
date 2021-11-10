@@ -1,6 +1,5 @@
-// import { useState } from 'react';
 import UserData from '../UserData/UserData';
-// import { fechUserslogin } from '../../utilits/fetchApi';
+import s from './Users.module.css';
 
 function Users({ usersData, isUserDetail, searcUserlogin }) {
   const dataUsers = usersData.items;
@@ -16,12 +15,12 @@ function Users({ usersData, isUserDetail, searcUserlogin }) {
 
   return (
     <>
-      <ul>
+      <ul className={s.list}>
         {dataUsers.map(({ id, login, avatar_url }) => (
-          <li key={id}>
-            <button type="button" onClick={() => hendleClick(login)}>
-              <img src={avatar_url} alt="Aavatar" width="50px" />
-              {login}
+          <li key={id} className={s.item}>
+            <button type="button" className={s.linkBtn} onClick={() => hendleClick(login)}>
+              <img className={s.avatar} src={avatar_url} alt="Aavatar" width="50px" />
+              <span className={s.userLogin}>{login}</span>
               <p>Repo: sdds</p>
             </button>
           </li>

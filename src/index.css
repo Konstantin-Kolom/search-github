@@ -13,3 +13,7 @@ code {
 #root {
   margin: 50px 70px;
 }
+
+button {
+  display: block;
+}

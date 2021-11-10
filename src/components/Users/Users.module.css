@@ -1,0 +1,30 @@
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.item {
+  cursor: pointer;
+  width: 100%;
+}
+
+.linkBtn {
+  width: 100%;
+  margin-top: 4px;
+  padding-top: 4px;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.userLogin {
+  width: 300px;
+  align-items: ;
+}

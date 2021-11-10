@@ -1,0 +1,52 @@
+.box {
+  display: flex;
+}
+
+.inputSearchName {
+  min-width: 300 px;
+  box-shadow: inset 0 1px 5px rgb(0 0 0 / 20%);
+  border: 1 px solid #ccc;
+  overflow: visible;
+  margin-right: 12px;
+}
+
+.button {
+  display: inline-block;
+  box-sizing: border-box;
+  /* padding: 0 25 px; */
+  /* margin: 0 15 px 15 px 0; */
+  outline: none;
+  /* border: 1 px solid #fff; */
+  /* border-radius: 50 px; */
+  /* height: 46 px; */
+  line-height: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #00f;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgb(65 132 144 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+  cursor: pointer;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  transition: box-shadow 0.2s;
+  height: 100%;
+  width: 70px;
+  /* min-width: 50 px; */
+  margin-right: 24px;
+}
+
+.button:focus-visible {
+  border: 1px solid #4c51f9;
+  outline: none;
+}
+.button:hover {
+  transition: all 0.2s;
+  box-shadow: 0 2px 2px 1px #cfcfcf, 0 2px 5px 0 #cfcfcf;
+  background-color: #f0ee9b;
+}

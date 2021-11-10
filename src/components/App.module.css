@@ -40,3 +40,22 @@
 .conteiner {
   display: flex;
 }
+
+.section {
+  padding: 24px;
+  margin-right: 32px;
+  width: 500px;
+  border: 1px solid;
+  border-radius: 8px;
+  background-color: #98d1ff;
+}
+
+.sectionUser {
+  position: relative;
+  padding: 24px;
+  margin-right: 32px;
+  width: 500px;
+  border: 1px solid;
+  border-radius: 8px;
+  background-color: #98d1ff;
+}

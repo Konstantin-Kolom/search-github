@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+import s from './SearchForm.module.css';
 
 function SearchForm({ searchUser }) {
   const [name, setName] = useState('');
@@ -18,14 +20,18 @@ function SearchForm({ searchUser }) {
     searchUser('');
   };
 
+  useEffect(() => {
+    if (name === '') {
+      searchUser('');
+    }
+  }, [name, searchUser]);
+
   return (
-    <div>
+    <div className={s.box}>
       <form className="{s.ContactEntryForm}" onSubmit={hendleSearch}>
-        <label className="{s.NameInputField}">
-          {/* <span className="{s.iconForm}"></span> */}
-          {/* <span className="">Name:</span> */}
+        <label className={s.searchName}>
           <input
-            className=""
+            className={s.inputSearchName}
             type="text"
             name="name"
             value={name}
@@ -37,10 +43,12 @@ function SearchForm({ searchUser }) {
             onChange={hendleChangeName}
           />
         </label>
-        <button type="submit">Search</button>
+        <button type="submit" className={s.button}>
+          Search
+        </button>
       </form>
 
-      <button type="button" onClick={reset}>
+      <button type="button" className={s.button} onClick={reset}>
         Сlear
       </button>
     </div>
