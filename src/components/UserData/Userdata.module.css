@@ -21,18 +21,18 @@
 
 .closeBtn {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 5px;
+  left: 90%;
 
   display: inline-block;
   box-sizing: border-box;
-  padding: 0 25 px;
-  margin: 0 15 px 15 px 0;
+  /* padding: 0 25 px; */
+  /* margin: 0 15 px 15 px 0; */
   outline: none;
   border: 1 px solid #fff;
   border-radius: 50 px;
-  height: 46 px;
-  line-height: 46px;
+  /* height: 20 px; */
+  line-height: 20px;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;

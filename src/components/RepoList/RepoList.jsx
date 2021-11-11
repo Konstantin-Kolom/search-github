@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import s from './RepoList.module.css';
 
 function Repolist(userPerpo) {
   const [repoUser, setRepoUser] = useState([]);
